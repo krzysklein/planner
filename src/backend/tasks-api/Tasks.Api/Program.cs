@@ -25,6 +25,14 @@ namespace Tasks.Api
                 .AddApplicationServices()
                 .AddInfrastructureServices(builder.Configuration);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CorsAllowAll", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+            });
+
             builder.Services.AddControllers();
             builder.Services.AddSwaggerGen();
         }
@@ -38,6 +46,7 @@ namespace Tasks.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsAllowAll");
             app.UseAuthorization();
             app.MapControllers();
         }
