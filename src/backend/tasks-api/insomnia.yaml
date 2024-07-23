@@ -1,0 +1,224 @@
+_type: export
+__export_format: 4
+__export_date: 2024-07-23T07:59:31.705Z
+__export_source: insomnia.desktop.app:v9.3.2
+resources:
+  - _id: req_9cffe90e5509442094461eb4022bd672
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721503316
+    created: 1721720892443
+    url: "{{ _.base_url }}/tasks/{{ _.task_id }}/state"
+    name: /tasks/{id}/state
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "state": "closed"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication: {}
+    metaSortKey: -1721720892443
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_b81dab4c50d4494e817dad48457a2f45
+    parentId: null
+    modified: 1721719550465
+    created: 1721719550465
+    name: TasksApi
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_b55aa3f06a0e4666a5eea5f25e240052
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721470012
+    created: 1721720892441
+    url: "{{ _.base_url }}/tasks/{{ _.task_id }}/details"
+    name: /tasks/{id}/details
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "name",
+          "description": "description"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication: {}
+    metaSortKey: -1721720892441
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_60d06711d01e49dc85e8f8fbbaf3156e
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721435956
+    created: 1721720892438
+    url: "{{ _.base_url }}/tasks"
+    name: /tasks
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "name",
+          "description": "description",
+          "state": "active"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication: {}
+    metaSortKey: -1721720892438
+    isPrivate: false
+    afterResponseScript: |
+      
+      const statusCode = insomnia.response.code;
+      if (statusCode == 201) {
+      	const jsonBody = insomnia.response.json();
+      	insomnia.collectionVariables.set("task_id", jsonBody.id);
+      }
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1ecef9b3c0144274a897a490021992b3
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721095606
+    created: 1721720892433
+    url: "{{ _.base_url }}/tasks/search"
+    name: /tasks/search
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: search_phrase
+        disabled: true
+        value: string
+      - name: state
+        disabled: true
+        value: string
+      - name: page_number
+        disabled: true
+        value: "0"
+      - name: page_size
+        disabled: true
+        value: "10"
+    headers: []
+    authentication: {}
+    metaSortKey: -1721720892433
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ae600c7d38004754bb1e28927edabc2e
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721476287
+    created: 1721720892430
+    url: "{{ _.base_url }}/tasks/{{ _.task_id }}"
+    name: /tasks/{id}
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1721720892430
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d373317ccb8e457f9fe2229e0a082bfc
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721481277
+    created: 1721720892426
+    url: "{{ _.base_url }}/tasks/{{ _.task_id }}"
+    name: /tasks/{id}
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1721720892426
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_d9fcbfde9f8346316ab5ce2e555be54d82dceaaa
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721439866
+    created: 1721719550468
+    name: Base Environment
+    data:
+      task_id: 4b361476-8dc3-4c16-8d9f-e9c39c909fab
+    dataPropertyOrder:
+      "&":
+        - task_id
+    color: null
+    isPrivate: false
+    metaSortKey: 1721719550468
+    _type: environment
+  - _id: jar_d9fcbfde9f8346316ab5ce2e555be54d82dceaaa
+    parentId: wrk_b81dab4c50d4494e817dad48457a2f45
+    modified: 1721721439864
+    created: 1721719550471
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: env_5e59c805f93f4a80b2b45e8e6054cae2
+    parentId: env_d9fcbfde9f8346316ab5ce2e555be54d82dceaaa
+    modified: 1721720892329
+    created: 1721720892329
+    name: OpenAPI env example.com
+    data:
+      scheme: http
+      base_path: ""
+      host: example.com
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1721720892342
+    _type: environment
